@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
  *
  * @author Administrator
  */
-public class PedidoController implements Initializable{ 
+public class PedidoController implements Initializable { 
 
     @FXML
     private Button scene1Button;
@@ -65,10 +65,8 @@ public class PedidoController implements Initializable{
     private ImageView myImageView;
 
    
-    /**
-     * Initializes the controller class.
-     * @param url
-     */
+    
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
