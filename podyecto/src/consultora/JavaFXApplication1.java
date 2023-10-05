@@ -33,7 +33,7 @@ public class JavaFXApplication1 extends Application {
             stage.show();
         }
     }
-
+//este es un comentario
     public static void main(String[] args) {
         launch(args);
     }

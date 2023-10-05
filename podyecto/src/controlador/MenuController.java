@@ -16,11 +16,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -29,16 +24,7 @@ import javafx.stage.Stage;
  *
  * @author Administrator
  */
-public class LoginController implements Initializable {
-
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Label statusLabel;
-    @FXML
-    private ImageView myImageView;
+public class MenuController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -46,23 +32,28 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       
-    }    
-
-        @FXML
-    private void loginButtonAction() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-
-        //auth logic (rudimentary)
-        if (username.equals("admin") && password.equals("1234")) {
-            abrirventana("Menu ELECE","/vistas/menu.fxml");
-        } else {
-            statusLabel.setText("Usuario/Contraseña incorrectos");
-        }
     }
     
+  @FXML
+    private void loadClientesView(ActionEvent event) throws Exception {
+         abrirventana("Clientes","/vistas/clientes.fxml");
+    }
+
     @FXML
+    private void loadFuncionariosView(ActionEvent event) throws Exception {
+         abrirventana("Funcionarios","/vistas/funcionarios.fxml");
+    }
+
+    @FXML
+    private void loadServiciosView(ActionEvent event) throws Exception {
+         abrirventana("Servicios","/vistas/servicios.fxml");
+    }
+
+    @FXML
+    private void loadProyectosView(ActionEvent event) throws Exception {
+        abrirventana("Proyectos","/vistas/pedido.fxml");
+    }
+
     public void abrirventana(String titulo, String direccion){
         try {
             Stage stage = new Stage();
@@ -77,9 +68,5 @@ public class LoginController implements Initializable {
         }
     }
     
-    private void displayImage() {
-        Image myImage = new Image(getClass().getResourceAsStream("vistas/ELECE_logo.jpeg"));
-        myImageView.setImage(myImage);
-    }
     
 }
