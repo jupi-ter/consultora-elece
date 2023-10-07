@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="383.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.PedidosController">
+
+    <!-- Right Pane with Calendars, ComboBoxes, TableView, and Description TextField -->
+    <Pane layoutX="200.0" prefHeight="319.0" prefWidth="648.0">
+        <HBox layoutY="20.0" spacing="10.0">
+            <!-- ComboBoxes -->
+            <ComboBox promptText="ComboBox 1" />
+            <ComboBox promptText="ComboBox 2" />
+            
+            <!-- Calendars -->
+            <DatePicker promptText="Calendar 1" />
+            <DatePicker promptText="Calendar 2" />
+        </HBox>
+
+        <!-- Table View -->
+        <TableView layoutY="60.0" prefHeight="255.0" prefWidth="371.0" style="-fx-border-color: black;">
+            <!-- Table columns go here -->
+        </TableView>
+   
+        <!-- Description TextField -->
+        <TextField layoutX="394.0" layoutY="60.0" prefHeight="255.0" prefWidth="219.0" promptText="Description" style="-fx-border-color: black;" />
+    </Pane>
+   <ImageView fitHeight="91.0" fitWidth="101.0" layoutX="55.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@ELECE_logo.jpeg" />
+      </image>
+   </ImageView>
+
+</AnchorPane>

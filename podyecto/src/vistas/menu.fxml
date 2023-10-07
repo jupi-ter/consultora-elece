@@ -7,5 +7,5 @@
     <Button onAction="#loadClientesView" text="Clientes" />
     <Button onAction="#loadFuncionariosView" text="Funcionarios" />
     <Button onAction="#loadServiciosView" text="Servicios" />
-    <Button onAction="#loadProyectosView" text="Proyectos" />
+    <Button text="Pedidos" onAction="#loadPedidosView"/>
 </VBox>
