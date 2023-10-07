@@ -7,32 +7,32 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="429.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ServiciosController">
+<AnchorPane prefHeight="460.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ServiciosController">
     <children>
-        <TextField fx:id="buscar" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="570.0" promptText="Buscar" />
+        <TextField fx:id="buscar" layoutX="10.0" layoutY="10.0" onKeyReleased="#buscar" prefHeight="26.0" prefWidth="570.0" promptText="Buscar" />
 
-        <TableView fx:id="tablaServicio" layoutX="10.0" layoutY="40.0" prefHeight="310.0" prefWidth="569.0">
+        <TableView fx:id="tablaServicio" layoutX="10.0" layoutY="40.0" onMouseClicked="#mostrarDatos" prefHeight="310.0" prefWidth="569.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="Id" />
-                <TableColumn prefWidth="75.0" text="Nombre" />
-                <TableColumn prefWidth="149.6" text="Desc." />
-                <TableColumn prefWidth="67.2" text="Costo" />
+                <TableColumn fx:id="columnaId" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="columnaNombre" prefWidth="75.0" text="Nombre" />
+                <TableColumn fx:id="columnaDescripcion" prefWidth="324.0" text="Desc." />
+                <TableColumn fx:id="columnaCosto" prefWidth="94.40005493164062" text="Costo" />
             </columns>
         </TableView>
 
-        <TextField layoutX="589.0" layoutY="40.0" promptText="Id" />
-        <TextField layoutX="589.0" layoutY="75.0" promptText="Nombre" />
-        <TextField layoutX="589.0" layoutY="110.0" promptText="Costo" />
-        <TextField layoutX="589.0" layoutY="145.0" prefHeight="222.0" prefWidth="254.0" promptText="Descripcion" />
+        <TextField fx:id="txtId" disable="true" layoutX="589.0" layoutY="40.0" promptText="Id" />
+        <TextField fx:id="txtNombre" disable="true" layoutX="589.0" layoutY="75.0" promptText="Nombre" />
+        <TextField fx:id="txtCosto" disable="true" layoutX="589.0" layoutY="110.0" promptText="Costo" />
+        <TextField fx:id="txtDescripcion" disable="true" layoutX="589.0" layoutY="145.0" prefHeight="222.0" prefWidth="254.0" promptText="Descripcion" />
 
         <TitledPane prefHeight="60.0" prefWidth="916.0" text="Acciones" AnchorPane.bottomAnchor="0.0">
             <content>
                 <AnchorPane>
-                    <Button fx:id="btnNuevo" layoutX="10.0" layoutY="10.0" maxWidth="150" text="Nuevo" />
-                    <Button fx:id="btnModificar" layoutX="170.0" layoutY="10.0" maxWidth="150" text="Modificar" />
-                    <Button fx:id="btnBorrar" layoutX="330.0" layoutY="10.0" maxWidth="150" text="Borrar" />
-                    <Button fx:id="btnGuardar" layoutX="490.0" layoutY="10.0" maxWidth="150" text="Guardar" />
-                    <Button fx:id="btnCancelar" layoutX="650.0" layoutY="10.0" maxWidth="150" text="Cancelar" />
+                    <Button fx:id="btnNuevo" disable="false" layoutX="10.0" layoutY="10.0" maxWidth="150" onAction="#nuevo" text="Nuevo" />
+                    <Button fx:id="btnModificar" disable="true" layoutX="170.0" layoutY="10.0" maxWidth="150" onAction="#modificar" text="Modificar" />
+                    <Button fx:id="btnEliminar" disable="true" layoutX="330.0" layoutY="10.0" maxWidth="150" onAction="#eliminar" text="Borrar" />
+                    <Button fx:id="btnGuardar" disable="true" layoutX="490.0" layoutY="10.0" maxWidth="150" onAction="#guardar" text="Guardar" />
+                    <Button fx:id="btnCancelar" disable="true" layoutX="650.0" layoutY="10.0" maxWidth="150" onAction="#cancelar" text="Cancelar" />
                 </AnchorPane>
             </content>
         </TitledPane>
