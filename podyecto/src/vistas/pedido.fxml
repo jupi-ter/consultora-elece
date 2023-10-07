@@ -1,66 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="384.0" prefWidth="846.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.PedidoController">
-
-    <!-- Left Pane with Buttons -->
-    <Pane layoutY="99.0" prefHeight="166.0" prefWidth="200.0">
-        <Button layoutX="36.0" layoutY="17.0" onAction="" prefHeight="29.0" prefWidth="128.0" text="Scene 1" />
-        <Button layoutX="36.0" layoutY="57.0" onAction="" prefHeight="29.0" prefWidth="128.0" text="Scene 2" />
-        <Button layoutX="36.0" layoutY="97.0" onAction="3" prefHeight="29.0" prefWidth="128.0" text="Scene 3" />
-        <Button layoutX="36.0" layoutY="137.0" onAction="" prefHeight="29.0" prefWidth="128.0" text="Pedidos " />
-    </Pane>
-
-    <!-- Right Pane with Calendars, ComboBoxes, TableView, and Description TextField -->
-    <Pane layoutX="200.0" prefHeight="319.0" prefWidth="648.0">
-        <HBox layoutY="20.0" spacing="10.0">
-            <!-- ComboBoxes -->
-            <ComboBox promptText="ComboBox 1" />
-            <ComboBox promptText="ComboBox 2" />
-            
-            <!-- Calendars -->
-            <DatePicker promptText="Calendar 1" />
-            <DatePicker promptText="Calendar 2" />
-        </HBox>
-
-        <!-- Table View -->
-        <TableView layoutY="60.0" prefHeight="255.0" prefWidth="371.0" style="-fx-border-color: black;">
-            <!-- Table columns go here -->
+<AnchorPane prefHeight="429.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.PedidoController">
+    <children>
+        <TableView fx:id="tableView" layoutX="16.0" layoutY="44.0" prefHeight="300" prefWidth="884.0">
+            <!-- Define your table columns and data here -->
         </TableView>
-   
-        <!-- Description TextField -->
-        <TextField layoutX="394.0" layoutY="60.0" prefHeight="255.0" prefWidth="219.0" promptText="Description" style="-fx-border-color: black;" />
-    </Pane>
-
-    <!-- TitledPane -->
-    <TitledPane animated="false" layoutY="319.0" prefHeight="71.0" prefWidth="846.0" text="untitled">
-        <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="42.0" prefWidth="840.0">
-                <!-- Buttons -->
-                <HBox layoutX="284.0" layoutY="6.0" spacing="10.0">
-                    <Button text="Nuevo" />
-                    <Button text="Modificar" />
-                    <Button text="Borrar" />
-                    <Button text="Cancelar" />
-                </HBox>
-            </AnchorPane>
-        </content>
-    </TitledPane>
-   <ImageView fitHeight="91.0" fitWidth="101.0" layoutX="55.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@ELECE_logo.jpeg" />
-      </image>
-   </ImageView>
+      <Button layoutX="409.0" layoutY="354.0" mnemonicParsing="false" onAction="#loadCargarPedidoView" text="Nuevo Pedido" />
+    </children>
 
 </AnchorPane>
