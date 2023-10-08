@@ -1,80 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author Administrator
+ * @author Fabrizio
  */
-public class PedidoController implements Initializable { 
+    public class PedidoController implements Initializable {
 
-    @FXML
-    private Button scene1Button;
-
-    @FXML
-    private Button scene2Button;
-
-    @FXML
-    private Button scene3Button;
-
-    @FXML
-    private Button pedidosButton;
-
-    @FXML
-    private ComboBox<String> comboBox1;
-
-    @FXML
-    private ComboBox<String> comboBox2;
-
-    @FXML
-    private DatePicker calendar1;
-
-    @FXML
-    private DatePicker calendar2;
-
-    @FXML
-    private TableView<?> tableView;
-
-    @FXML
-    private TextField descriptionTextField;
-
-    @FXML
-    private Button nuevoButton;
-
-    @FXML
-    private Button modificarButton;
-
-    @FXML
-    private Button borrarButton;
-
-    @FXML
-    private Button cancelarButton;
-    
-    @FXML
-    private ImageView myImageView;
-
-   
-    
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
     
-    private void displayImage(){
-        Image myImage = new Image(getClass().getResourceAsStream("vistas/ELECE_logo.jpeg"));
-        myImageView.setImage(myImage);
+    @FXML
+    private void loadCargarPedidoView(ActionEvent event) throws Exception {
+        abrirventana("Cargar Pedido","/vistas/cargarPedido.fxml");          
+    }
+
+    public void abrirventana(String titulo, String direccion){
+        try {
+            Stage stage = new Stage();
+            Parent formulario = FXMLLoader.load(getClass().getResource(direccion));
+            Scene scene = new Scene(formulario);
+            stage.setTitle(titulo);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-}    
-   
+    
+}

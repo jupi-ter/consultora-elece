@@ -40,8 +40,8 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    private void loadFuncionariosView(ActionEvent event) throws Exception {
-         abrirventana("Funcionarios","/vistas/funcionarios.fxml");
+    private void loadFuncionarioView(ActionEvent event) throws Exception {
+         abrirventana("Funcionarios","/vistas/funcionario.fxml");
     }
 
     @FXML
