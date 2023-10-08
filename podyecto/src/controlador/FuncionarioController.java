@@ -22,44 +22,47 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
-import modelo.cliente;
+import modelo.funcionario;
 import modelo.reportes;
-
 /**
  * FXML Controller class
  *
  * @author Administrator
  */
-public class ClienteController implements Initializable {
+public class FuncionarioController implements Initializable {
 
     @FXML
     private TextField txtcodigo;
     @FXML
     private TextField txtnombre;
     @FXML
-    private TextField txtdireccion;
+    private TextField txtci;
     @FXML
-    private TextField txtpropietario;
+    private TextField txtprofesion;
+    @FXML
+    private TextField txtespecialidad;
+    @FXML
+    private TextField txttelefono;
     @FXML
     private TextField txtemail;
     @FXML
-    private TextField txttelcontacto;
-    @FXML
     private TextField buscar;
     @FXML
-    private TableView<cliente> tablaCliente;
+    private TableView<funcionario> tablaFuncionario;
     @FXML
-    private TableColumn<cliente, Integer> columnaIdEmpresa;
+    private TableColumn<funcionario, Integer> columnaIdFuncionario;
     @FXML
-    private TableColumn<cliente, String> columnaNombreEmpresa;
+    private TableColumn<funcionario, String> columnaNombreFuncionario;
     @FXML
-    private TableColumn<cliente, String> columnaDirEmpresa;
+    private TableColumn<funcionario, String> columnaCiEspecialista;
     @FXML
-    private TableColumn<cliente, String> columnaPropietarioEmpresa;
+    private TableColumn<funcionario, String> columnaProfesionFuncionario;
     @FXML
-    private TableColumn<cliente, String> columnaEmailContacto;
+    private TableColumn<funcionario, String> columnaEspecialidadFuncionario;
     @FXML
-    private TableColumn<cliente, String> columnaTelContacto;
+    private TableColumn<funcionario, String> columnaTelEspecialista;
+    @FXML
+    private TableColumn<funcionario, String> columnaEmailFuncionario;
     @FXML
     private Button btnNuevo;
     @FXML
@@ -70,9 +73,9 @@ public class ClienteController implements Initializable {
     private Button btnGuardar;
     @FXML
     private Button btnCancelar;
-    cliente c = new cliente();
-    ObservableList<cliente> registros;
-    ObservableList<cliente> registrosfiltrados;
+    funcionario f = new funcionario();
+    ObservableList<funcionario> registros;
+    ObservableList<funcionario> registrosfiltrados;
     reportes r = new reportes();
     boolean modificar = false;
 
@@ -80,40 +83,39 @@ public class ClienteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         cargardatos();
     }    
-    
- 
+
     @FXML
     private void buscar(KeyEvent event) {
         registrosfiltrados = FXCollections.observableArrayList();
         String cadena = buscar.getText();
         if (cadena.isEmpty()) {
-            tablaCliente.setItems(registros);
+            tablaFuncionario.setItems(registros);
         } else {
             registrosfiltrados.clear();
-            for (cliente registro : registros) {
-                if (registro.getNombre_empresa().toLowerCase().contains(cadena.toLowerCase())) {
+            for (funcionario registro : registros) {
+                if (registro.getNombre_funcionario().toLowerCase().contains(cadena.toLowerCase())) {
                     registrosfiltrados.add(registro);
                 }
             }
-        tablaCliente.setItems(registrosfiltrados);
+        tablaFuncionario.setItems(registrosfiltrados);
         }
     }
- 
+
     @FXML
     private void mostrarDatos(MouseEvent event) {
-        c = tablaCliente.getSelectionModel().getSelectedItem();
-        txtcodigo.setText(String.valueOf(c.getId_empresa()));
-        txtnombre.setText(String.valueOf(c.getNombre_empresa()));
-        txtdireccion.setText(String.valueOf(c.getDir_empresa()));
-        txtpropietario.setText(String.valueOf(c.getPropietario_empresa()));
-        txtemail.setText(String.valueOf(c.getEmail_contacto()));
-        txttelcontacto.setText(String.valueOf(c.getTel_contacto()));
+        f = tablaFuncionario.getSelectionModel().getSelectedItem();
+        txtcodigo.setText(String.valueOf(f.getId_funcionario()));
+        txtnombre.setText(String.valueOf(f.getNombre_funcionario()));
+        txtci.setText(String.valueOf(f.getCi_especialista()));
+        txtprofesion.setText(String.valueOf(f.getProfesion_funcionario()));
+        txtespecialidad.setText(String.valueOf(f.getEspecialidad_funcionario()));
+        txttelefono.setText(String.valueOf(f.getTel_especialista()));
+        txtemail.setText(String.valueOf(f.getEmail_funcionario()));
         btnCancelar.setDisable(false);
         btnModificar.setDisable(false);
         btnEliminar.setDisable(false);
         btnNuevo.setDisable(true);
     }
-
     @FXML
     private void nuevo(ActionEvent event) {
         btnGuardar.setDisable(false);
@@ -121,10 +123,11 @@ public class ClienteController implements Initializable {
         btnCancelar.setDisable(false);
         txtcodigo.setDisable(false);
         txtnombre.setDisable(false);
-        txtdireccion.setDisable(false);
-        txtpropietario.setDisable(false);
+        txtci.setDisable(false);
+        txtprofesion.setDisable(false);
+        txtespecialidad.setDisable(false);
+        txttelefono.setDisable(false);
         txtemail.setDisable(false);
-        txttelcontacto.setDisable(false);
         txtcodigo.requestFocus();
     }
 
@@ -137,10 +140,11 @@ public class ClienteController implements Initializable {
         btnEliminar.setDisable(true);
         txtcodigo.setDisable(false);
         txtnombre.setDisable(false);
-        txtdireccion.setDisable(false);
-        txtpropietario.setDisable(false);
+        txtci.setDisable(false);
+        txtprofesion.setDisable(false);
+        txtespecialidad.setDisable(false);
+        txttelefono.setDisable(false);
         txtemail.setDisable(false);
-        txttelcontacto.setDisable(false);
         txtcodigo.requestFocus();
         modificar = true;
     }
@@ -155,7 +159,7 @@ public class ClienteController implements Initializable {
         limpiarcampos();
         int opcion = Integer.parseInt(JOptionPane.showInputDialog(null,"Desea eliminar el dato seleccionado?"+"\n"+"1- Si"+"\n"+"2- No"));
         if (opcion == 1){
-            if (c.borrar()) {
+            if (f.borrar()) {
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setHeaderText(null);
                 alerta.setTitle("El sistema comunica");
@@ -181,20 +185,22 @@ public class ClienteController implements Initializable {
             btnEliminar.setDisable(true);
             btnGuardar.setDisable(true);
             btnCancelar.setDisable(true);
-            c.setId_empresa(Integer.parseInt(txtcodigo.getText()));
-            c.setNombre_empresa(txtnombre.getText());
-            c.setDir_empresa(txtdireccion.getText());
-            c.setPropietario_empresa(txtpropietario.getText());
-            c.setEmail_contacto(txtemail.getText());
-            c.setTel_contacto(txttelcontacto.getText());
+            f.setId_funcionario(Integer.parseInt(txtcodigo.getText()));
+            f.setNombre_funcionario(txtnombre.getText());
+            f.setCi_especialista(txtci.getText());
+            f.setProfesion_funcionario(txtprofesion.getText());
+            f.setEspecialidad_funcionario(txtespecialidad.getText());
+            f.setTel_especialista(txttelefono.getText());
+            f.setEmail_funcionario(txtemail.getText());
             limpiarcampos();
             txtcodigo.setDisable(true);
             txtnombre.setDisable(true);
-            txtdireccion.setDisable(true);
-            txtpropietario.setDisable(true);
+            txtci.setDisable(true);
+            txtprofesion.setDisable(true);
+            txtespecialidad.setDisable(true);
+            txttelefono.setDisable(true);
             txtemail.setDisable(true);
-            txttelcontacto.setDisable(true);
-            if (c.modificar()) {
+            if (f.modificar()) {
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setHeaderText(null);
                 alerta.setTitle("El sistema comunica");
@@ -212,20 +218,22 @@ public class ClienteController implements Initializable {
             btnEliminar.setDisable(true);
             btnGuardar.setDisable(true);
             btnCancelar.setDisable(true);
-            c.setId_empresa(Integer.parseInt(txtcodigo.getText()));
-            c.setNombre_empresa(txtnombre.getText());
-            c.setDir_empresa(txtdireccion.getText());
-            c.setPropietario_empresa(txtpropietario.getText());
-            c.setEmail_contacto(txtemail.getText());
-            c.setTel_contacto(txttelcontacto.getText());
+            f.setId_funcionario(Integer.parseInt(txtcodigo.getText()));
+            f.setNombre_funcionario(txtnombre.getText());
+            f.setCi_especialista(txtci.getText());
+            f.setProfesion_funcionario(txtprofesion.getText());
+            f.setEspecialidad_funcionario(txtespecialidad.getText());
+            f.setTel_especialista(txttelefono.getText());
+            f.setEmail_funcionario(txtemail.getText());
             limpiarcampos();
             txtcodigo.setDisable(true);
             txtnombre.setDisable(true);
-            txtdireccion.setDisable(true);
-            txtpropietario.setDisable(true);
+            txtci.setDisable(true);
+            txtprofesion.setDisable(true);
+            txtespecialidad.setDisable(true);
+            txttelefono.setDisable(true);
             txtemail.setDisable(true);
-            txttelcontacto.setDisable(true);
-            if (c.insertar()) {
+            if (f.insertar()) {
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setHeaderText(null);
                 alerta.setTitle("El sistema comunica");
@@ -249,37 +257,37 @@ public class ClienteController implements Initializable {
         btnGuardar.setDisable(true);
         btnCancelar.setDisable(true);
         txtcodigo.setDisable(true);
-        txtcodigo.setDisable(true);
         txtnombre.setDisable(true);
-        txtdireccion.setDisable(true);
-        txtpropietario.setDisable(true);
+        txtci.setDisable(true);
+        txtprofesion.setDisable(true);
+        txtespecialidad.setDisable(true);
+        txttelefono.setDisable(true);
         txtemail.setDisable(true);
-        txttelcontacto.setDisable(true);
         btnModificar.setDisable(true);
         btnEliminar.setDisable(true);
         btnNuevo.setDisable(false);
     }
-   
     
    private void cargardatos(){
-       ArrayList<cliente> lista = c.consultar();
+       ArrayList<funcionario> lista = f.consultar();
        registros = FXCollections.observableArrayList(lista);
-       columnaIdEmpresa.setCellValueFactory(new PropertyValueFactory<>("id_empresa"));
-       columnaNombreEmpresa.setCellValueFactory(new PropertyValueFactory<>("nombre_empresa"));
-       columnaDirEmpresa.setCellValueFactory(new PropertyValueFactory<>("dir_empresa"));
-       columnaPropietarioEmpresa.setCellValueFactory(new PropertyValueFactory<>("propietario_empresa"));
-       columnaEmailContacto.setCellValueFactory(new PropertyValueFactory<>("email_contacto"));
-       columnaTelContacto.setCellValueFactory(new PropertyValueFactory<>("tel_contacto"));
-       tablaCliente.setItems(registros);
-    } 
+       columnaIdFuncionario.setCellValueFactory(new PropertyValueFactory<>("id_funcionario"));
+       columnaNombreFuncionario.setCellValueFactory(new PropertyValueFactory<>("nombre_funcionario"));
+       columnaCiEspecialista.setCellValueFactory(new PropertyValueFactory<>("ci_especialista"));
+       columnaProfesionFuncionario.setCellValueFactory(new PropertyValueFactory<>("profesion_funcionario"));
+       columnaEspecialidadFuncionario.setCellValueFactory(new PropertyValueFactory<>("especialidad_funcionario"));
+       columnaTelEspecialista.setCellValueFactory(new PropertyValueFactory<>("tel_especialista"));
+       columnaEmailFuncionario.setCellValueFactory(new PropertyValueFactory<>("email_funcionario"));
+       tablaFuncionario.setItems(registros);
+    }
    
-   private void limpiarcampos(){
+    private void limpiarcampos() {
         txtcodigo.clear();
         txtnombre.clear();
-        txtdireccion.clear();
-        txtpropietario.clear();
+        txtci.clear();
+        txtprofesion.clear();
+        txtespecialidad.clear();
+        txttelefono.clear();
         txtemail.clear();
-        txttelcontacto.clear();
     }
-    
 }
