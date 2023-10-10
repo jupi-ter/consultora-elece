@@ -57,6 +57,7 @@ public class LoginController implements Initializable {
         //auth logic (rudimentary)
         if (username.equals("admin") && password.equals("1234")) {
             abrirventana("Menu ELECE","/vistas/menu.fxml");
+            statusLabel.setText("Inicio exitoso.");
         } else {
             statusLabel.setText("Usuario/Contraseña incorrectos");
         }
