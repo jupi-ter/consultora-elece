@@ -23,6 +23,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import modelo.cliente;
+import modelo.reportes;
 
 /**
  * FXML Controller class
@@ -72,6 +73,7 @@ public class ClienteController implements Initializable {
     cliente c = new cliente();
     ObservableList<cliente> registros;
     ObservableList<cliente> registrosfiltrados;
+    reportes r = new reportes();
     boolean modificar = false;
 
     @Override
@@ -95,7 +97,6 @@ public class ClienteController implements Initializable {
             }
         tablaCliente.setItems(registrosfiltrados);
         }
-    
     }
  
     @FXML

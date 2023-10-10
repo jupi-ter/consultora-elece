@@ -4,42 +4,65 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="315.0" prefWidth="820.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FuncionarioController">
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="820.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FuncionarioController">
     <children>
-        <Pane layoutX="14.0" layoutY="14.0" prefHeight="251.0" prefWidth="229.0" style="-fx-border-color: black;">
+        <Pane layoutX="25.0" layoutY="122.0" prefHeight="251.0" prefWidth="229.0">
             <children>
-                <TextField fx:id="txtcodigo" disable="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" promptText="ID Funcionario" />
-                <TextField fx:id="txtnombre" disable="true" layoutX="15.0" layoutY="45.0" prefHeight="25.0" prefWidth="200.0" promptText="Nombre Funcionario" />
-                <TextField fx:id="txtci" disable="true" layoutX="14.0" layoutY="77.0" prefHeight="25.0" prefWidth="200.0" promptText="CI Funcionario" />
-                <TextField fx:id="txtprofesion" disable="true" layoutX="14.0" layoutY="108.0" prefHeight="25.0" prefWidth="200.0" promptText="Profesión Funcionario" />
-                <TextField fx:id="txtespecialidad" disable="true" layoutX="14.0" layoutY="140.0" prefHeight="25.0" prefWidth="200.0" promptText="Especialidad Funcionario" />
-                <TextField fx:id="txttelefono" disable="true" layoutX="14.0" layoutY="175.0" prefHeight="25.0" prefWidth="200.0" promptText="Teléfono Funcionario" />
-                <TextField fx:id="txtemail" disable="true" layoutX="14.0" layoutY="210.0" prefHeight="25.0" prefWidth="200.0" promptText="Email Funcionario" />
+                <TextField fx:id="txtcodigo" disable="true" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" promptText="ID Funcionario" style="-fx-border-color: black;" />
+                <TextField fx:id="txtnombre" disable="true" layoutX="15.0" layoutY="45.0" prefHeight="25.0" prefWidth="200.0" promptText="Nombre Funcionario" style="-fx-border-color: black;" />
+                <TextField fx:id="txtci" disable="true" layoutX="14.0" layoutY="77.0" prefHeight="25.0" prefWidth="200.0" promptText="CI Especialista" style="-fx-border-color: black;" />
+                <TextField fx:id="txtprofesion" disable="true" layoutX="14.0" layoutY="108.0" prefHeight="25.0" prefWidth="200.0" promptText="Profesión Funcionario" style="-fx-border-color: black;" />
+                <TextField fx:id="txtespecialidad" disable="true" layoutX="14.0" layoutY="140.0" prefHeight="25.0" prefWidth="200.0" promptText="Especialidad Funcionario" style="-fx-border-color: black;" />
+                <TextField fx:id="txttelefono" disable="true" layoutX="14.0" layoutY="175.0" prefHeight="25.0" prefWidth="200.0" promptText="Teléfono Especialista" style="-fx-border-color: black;" />
+                <TextField fx:id="txtemail" disable="true" layoutX="14.0" layoutY="210.0" prefHeight="25.0" prefWidth="200.0" promptText="Email Funcionario" style="-fx-border-color: black;" />
             </children>
         </Pane>
-        <Pane layoutX="243.0" layoutY="14.0" prefHeight="251.0" prefWidth="523.0" style="-fx-border-color: black;">
+        <Pane layoutX="254.0" layoutY="122.0" prefHeight="251.0" prefWidth="523.0">
             <children>
-                <TextField fx:id="buscar" layoutX="17.0" layoutY="14.0" onKeyReleased="#buscar" prefHeight="25.0" prefWidth="288.0" promptText="Buscar..." />
+                <TextField fx:id="buscar" layoutX="17.0" layoutY="14.0" onKeyReleased="#buscar" prefHeight="25.0" prefWidth="288.0" promptText="Buscar..." style="-fx-border-color: black;" />
                 <TableView fx:id="tablaFuncionario" layoutX="19.0" layoutY="48.0" onMouseClicked="#mostrarDatos" prefHeight="190.0" prefWidth="497.0">
                     <columns>
-                        <TableColumn fx:id="columnaIdFuncionario" prefWidth="55.0" text="Id" />
+                        <TableColumn fx:id="columnaIdFuncionario" prefWidth="55.0" text="ID" />
                         <TableColumn fx:id="columnaNombreFuncionario" prefWidth="77.0" text="Nombre" />
-                        <TableColumn fx:id="columnaCiFuncionario" prefWidth="50.0" text="CI" />
+                        <TableColumn fx:id="columnaCiEspecialista" prefWidth="50.0" text="CI" />
                         <TableColumn fx:id="columnaProfesionFuncionario" minWidth="0.0" prefWidth="73.0" text="Profesión" />
                         <TableColumn fx:id="columnaEspecialidadFuncionario" minWidth="0.0" prefWidth="96.0" text="Especialidad" />
-                        <TableColumn fx:id="columnaTelFuncionario" prefWidth="63.0" text="Teléfono" />
+                        <TableColumn fx:id="columnaTelEspecialista" prefWidth="63.0" text="Teléfono" />
                         <TableColumn fx:id="columnaEmailFuncionario" prefWidth="81.0" text="Email" />
                     </columns>
                 </TableView>
             </children>
         </Pane>
-        <Button fx:id="btnNuevo" layoutX="14.0" layoutY="272.0" onAction="#nuevo" text="Nuevo" />
-        <Button fx:id="btnModificar" disable="true" layoutX="75.0" layoutY="272.0" onAction="#modificar" text="Modificar" />
-        <Button fx:id="btnEliminar" disable="true" layoutX="154.0" layoutY="272.0" mnemonicParsing="true" onAction="#eliminar" text="Eliminar" />
-        <Button fx:id="btnGuardar" disable="true" layoutX="224.0" layoutY="272.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
-        <Button fx:id="btnCancelar" disable="true" layoutX="294.0" layoutY="272.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+      <ImageView fitHeight="150.0" fitWidth="155.0" layoutX="58.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ELECE_logo.jpeg" />
+         </image>
+      </ImageView>
+      <Text layoutX="274.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionarios">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <TitledPane animated="false" layoutY="386.0" prefHeight="63.0" prefWidth="822.0" text="Acciones">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                    <Button fx:id="btnNuevo" layoutX="14.0" layoutY="6.0" onAction="#nuevo" text="Nuevo" />
+                    <Button fx:id="btnModificar" disable="true" layoutX="103.0" layoutY="6.0" onAction="#modificar" text="Modificar" />
+                    <Button fx:id="btnEliminar" disable="true" layoutX="213.0" layoutY="6.0" mnemonicParsing="true" onAction="#eliminar" text="Eliminar" />
+                    <Button fx:id="btnGuardar" disable="true" layoutX="316.0" layoutY="6.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+                    <Button fx:id="btnCancelar" disable="true" layoutX="410.0" layoutY="6.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
     </children>
 </AnchorPane>

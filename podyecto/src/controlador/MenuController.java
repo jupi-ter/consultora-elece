@@ -40,7 +40,7 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    private void loadFuncionarioView(ActionEvent event) throws Exception {
+    private void loadFuncionariosView(ActionEvent event) throws Exception {
          abrirventana("Funcionarios","/vistas/funcionario.fxml");
     }
 
@@ -50,9 +50,8 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    private void loadProyectosView(ActionEvent event) throws Exception {
-        abrirventana("Pedido","/vistas/pedido.fxml");
-                
+    private void loadPedidosView(ActionEvent event) throws Exception {
+        abrirventana("Pedidos","/vistas/pedido.fxml");
     }
 
     public void abrirventana(String titulo, String direccion){
@@ -65,7 +64,7 @@ public class MenuController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

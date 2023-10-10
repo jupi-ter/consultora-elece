@@ -74,7 +74,7 @@ public class ServiciosController implements Initializable {
         cargardatos();
     }
     
-     @FXML
+    @FXML
     private void buscar(KeyEvent event) {
         registrosfiltrados = FXCollections.observableArrayList();
         String cadena = buscar.getText();

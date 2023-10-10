@@ -8,17 +8,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class funcionario extends conexion implements sentencia {
-    private int id_funcionario, ci_funcionario;
-    private String nombre_funcionario, profesion_funcionario, especialidad_funcionario, Tel_funcionario, email_funcionario;
+    private int id_funcionario;
+    private String nombre_funcionario, ci_especialista, profesion_funcionario, especialidad_funcionario, tel_especialista, email_funcionario;
     Statement query;
 
-    public funcionario(int id_funcionario, String nombre_funcionario, int ci_funcionario, String profesion_funcionario, String especialidad_funcionario, String Tel_funcionario, String email_funcionario) {
+    public funcionario(int id_funcionario, String nombre_funcionario, String ci_especialista, String profesion_funcionario, String especialidad_funcionario, String tel_especialista, String email_funcionario) {
         this.id_funcionario = id_funcionario;
         this.nombre_funcionario = nombre_funcionario;
-        this.ci_funcionario = ci_funcionario;
+        this.ci_especialista = ci_especialista;
         this.profesion_funcionario = profesion_funcionario;
         this.especialidad_funcionario = especialidad_funcionario;
-        this.Tel_funcionario = Tel_funcionario;
+        this.tel_especialista = tel_especialista;
         this.email_funcionario = email_funcionario;
     }
 
@@ -41,12 +41,12 @@ public class funcionario extends conexion implements sentencia {
         this.nombre_funcionario = nombre_funcionario;
     }
 
-    public int getci_funcionario() {
-        return ci_funcionario;
+    public String getCi_especialista() {
+        return ci_especialista;
     }
 
-    public void setci_funcionario(int ci_funcionario) {
-        this.ci_funcionario = ci_funcionario;
+    public void setCi_especialista(String ci_especialista) {
+        this.ci_especialista = ci_especialista;
     }
 
     public String getProfesion_funcionario() {
@@ -65,12 +65,12 @@ public class funcionario extends conexion implements sentencia {
         this.especialidad_funcionario = especialidad_funcionario;
     }
 
-    public String getTel_funcionario() {
-        return Tel_funcionario;
+    public String getTel_especialista() {
+        return tel_especialista;
     }
 
-    public void setTel_funcionario(String Tel_funcionario) {
-        this.Tel_funcionario = Tel_funcionario;
+    public void setTel_especialista(String tel_especialista) {
+        this.tel_especialista = tel_especialista;
     }
 
     public String getEmail_funcionario() {
@@ -84,7 +84,7 @@ public class funcionario extends conexion implements sentencia {
     @Override
     public boolean insertar() {
         try {
-            String sql = "INSERT INTO funcionario VALUES(" + getId_funcionario() + ",'" + getNombre_funcionario() + "','" + getci_funcionario() + "','" + getProfesion_funcionario() + "','" + getEspecialidad_funcionario() + "','" + getTel_funcionario() + "','" + getEmail_funcionario() + "')";
+            String sql = "INSERT INTO funcionario VALUES(" + getId_funcionario() + ",'" + getNombre_funcionario() + "','" + getCi_especialista() + "','" + getProfesion_funcionario() + "','" + getEspecialidad_funcionario() + "','" + getTel_especialista() + "','" + getEmail_funcionario() + "')";
             query = getCon().createStatement();
             query.executeUpdate(sql);
             return true;
@@ -97,7 +97,7 @@ public class funcionario extends conexion implements sentencia {
     @Override
     public boolean modificar() {
         try {
-            String sql = "UPDATE funcionario SET nombre_funcionario='" + getNombre_funcionario() + "', ci_funcionario='" + getci_funcionario() + "', profesion_funcionario='" + getProfesion_funcionario() + "', especialidad_funcionario='" + getEspecialidad_funcionario() + "', Tel_funcionario='" + getTel_funcionario() + "', email_funcionario='" + getEmail_funcionario() + "' WHERE id_funcionario=" + getId_funcionario() + ";";
+            String sql = "UPDATE funcionario SET nombre_funcionario='" + getNombre_funcionario() + "', ci_especialista='" + getCi_especialista() + "', profesion_funcionario='" + getProfesion_funcionario() + "', especialidad_funcionario='" + getEspecialidad_funcionario() + "', tel_especialista='" + getTel_especialista() + "', email_funcionario='" + getEmail_funcionario() + "' WHERE id_funcionario=" + getId_funcionario() + ";";
             query = getCon().createStatement();
             query.executeUpdate(sql);
             return true;
@@ -117,7 +117,7 @@ public class funcionario extends conexion implements sentencia {
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String nombre = rs.getString(2);
-                int ci = rs.getInt(3);
+                String ci = rs.getString(3);
                 String profesion = rs.getString(4);
                 String especialidad = rs.getString(5);
                 String telefono = rs.getString(6);
