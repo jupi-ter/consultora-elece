@@ -81,6 +81,15 @@ public class VerPedidoController implements Initializable {
         columnaEstado.setCellValueFactory(new PropertyValueFactory<>("estado_pedido"));
         tablaPedido.setItems(registros);
         
+        ArrayList<detalle_pedido> lista2 = dp.consultar();
+        registros2 = FXCollections.observableArrayList(lista2);
+        columnaIdFuncionario.setCellValueFactory(new PropertyValueFactory<>("id_funcionario"));
+        columnaIdPedidoDetalle.setCellValueFactory(new PropertyValueFactory<>("id_pedido"));
+        columnaIdEmpresa.setCellValueFactory(new PropertyValueFactory<>("id_empresa"));
+        columnaIdServicio.setCellValueFactory(new PropertyValueFactory<>("id_servicio"));
+        columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cant_pedida"));
+        tablaDetallePedido.setItems(registros2);
+        
         
     
     
