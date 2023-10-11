@@ -74,7 +74,7 @@ public class detalle_pedido extends conexion implements sentencia {
     @Override
     public boolean insertar() {
          try {
-            String sql = "INSERT INTO servicio VALUES(" + getId_funcionario() + ",'" + getId_pedido() + "','" + getId_empresa() + "'," + getId_servicio() + "','"+getCant_pedida()+")";
+            String sql = "INSERT INTO detalle_pedido VALUES(" + getId_funcionario() + ",'" + getId_pedido() + "','" + getId_empresa() + "'," + getId_servicio() + "','"+getCant_pedida()+")";
             query = getCon().createStatement();
             query.executeUpdate(sql);
             return true;
@@ -87,7 +87,7 @@ public class detalle_pedido extends conexion implements sentencia {
     @Override
     public boolean modificar() {
          try {
-            String sql = "UPDATE servicio SET id_funcionario=" + getId_funcionario() + ", id_pedido='" + getId_pedido()+ "', id_empresa'" + getId_empresa() + "', id_servicio=" + getId_servicio()+"', cant_pedida="+getCant_pedida()+")";
+            String sql = "UPDATE detalle_pedido SET id_funcionario=" + getId_funcionario() + ", id_pedido=" + getId_pedido()+ ", id_empresa" + getId_empresa() + ", id_servicio=" + getId_servicio()+", cant_pedida="+getCant_pedida()+")";
             query = getCon().createStatement();
             query.executeUpdate(sql);
             return true;
@@ -100,7 +100,7 @@ public class detalle_pedido extends conexion implements sentencia {
     @Override
     public boolean borrar() {
         try {
-            String sql = "DELETE FROM servicio WHERE id_pedidp=" + getId_pedido();
+            String sql = "DELETE FROM detalle_pedido WHERE id_pedido=" + getId_pedido();
             query = getCon().createStatement();
             query.executeUpdate(sql);
             return true;
