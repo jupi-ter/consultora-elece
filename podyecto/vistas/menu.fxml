@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="624.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.MenuController">
+    <Button layoutX="62.0" layoutY="81.0" onAction="#loadClientesView" text="Clientes">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+    <Button layoutX="62.0" layoutY="321.0" onAction="#loadFuncionariosView" text="Funcionarios">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+    <Button layoutX="62.0" layoutY="140.0" onAction="#loadServiciosView" text="Servicios">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+    <Button layoutX="65.0" layoutY="202.0" onAction="#loadCargarPedidos" text="Cargar Pedidos">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
+   <ImageView fitHeight="253.0" fitWidth="406.0" layoutX="308.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@ELECE_logo.jpeg" />
+      </image>
+   </ImageView>
+   <Button layoutX="65.0" layoutY="263.0" onAction="#loadVerPedidosView" text="Ver Pedidos">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+</AnchorPane>

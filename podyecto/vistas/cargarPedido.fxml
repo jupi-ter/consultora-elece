@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="323.0" prefWidth="914.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.CargarPedidoController">
+
+    <!-- Right Pane with Calendars, ComboBoxes, TableView, and Description TextField -->
+    <Pane layoutX="146.0" layoutY="30.0" prefHeight="271.0" prefWidth="742.0">
+      <TextField fx:id="txtEstado" layoutX="20.0" layoutY="200.0" prefHeight="25.0" prefWidth="100.0" promptText="Enter 0 or 1" onKeyTyped="#handleInput" />
+      <Label fx:id="lbCliente" layoutX="521.0" layoutY="102.0" prefHeight="83.0" prefWidth="187.0" text="Empresa: " />
+         <!-- ComboBoxes -->
+         <ComboBox fx:id="comboCliente" layoutX="521.0" layoutY="27.0" onHidden="#seleccionarCliente" prefHeight="26.0" prefWidth="149.0" promptText="Cliente" />
+         <ComboBox fx:id="comboServicio" layoutX="20.0" layoutY="27.0" prefHeight="25.0" prefWidth="175.0" promptText="Servicio" />
+      <ComboBox fx:id="comboFuncionario" layoutX="20.0" layoutY="64.0" prefHeight="25.0" prefWidth="175.0" promptText="Funcionario" />
+         
+                  <!-- Calendars -->
+         <DatePicker fx:id="fechaInicial" layoutX="284.0" layoutY="28.0" promptText="Fecha inicial" />
+         <DatePicker fx:id="fechaFinal" layoutX="284.0" layoutY="64.0" prefHeight="26.0" prefWidth="174.0" promptText="Fecha final" />
+      <TextField fx:id="txtDescripcion" layoutX="14.0" layoutY="123.0" prefHeight="62.0" prefWidth="381.0" promptText="Descripcion" />
+      <TextField fx:id="txtCant" layoutX="205.0" layoutY="28.0" prefHeight="25.0" prefWidth="51.0" promptText="Cant. S " />
+      <TextField fx:id="txtIdPedido" layoutX="20.0" layoutY="232.0" prefHeight="25.0" prefWidth="83.0" promptText="Id Pedido" />
+    </Pane>
+   <ImageView fitHeight="83.0" fitWidth="84.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@ELECE_logo.jpeg" />
+      </image>
+   </ImageView>
+   <Button fx:id="btnGuardar" layoutX="42.0" layoutY="140.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+   <Button fx:id="btnCancelar" layoutX="42.0" layoutY="178.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+
+</AnchorPane>
