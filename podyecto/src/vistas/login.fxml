@@ -23,7 +23,7 @@
           <Label layoutX="11.0" layoutY="105.0" text="Contraseña:" />
           <TextField fx:id="usernameField" layoutX="100.0" layoutY="53.0" prefHeight="26.0" prefWidth="152.0" />
           <PasswordField fx:id="passwordField" layoutX="99.0" layoutY="101.0" prefHeight="26.0" prefWidth="154.0" />
-          <Button layoutX="99.0" layoutY="162.0" mnemonicParsing="false" onAction="#loginButtonAction" text="Login" />
+          <Button layoutX="99.0" layoutY="162.0" mnemonicParsing="false" onAction="#loginAction" text="Login" />
          </children>
       </Pane>
     <Label fx:id="statusLabel" layoutX="287.0" layoutY="288.0" prefWidth="154.0" text="" textAlignment="CENTER" />

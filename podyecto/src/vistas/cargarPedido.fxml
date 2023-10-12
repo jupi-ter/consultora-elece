@@ -4,75 +4,36 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="429.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.CargarPedidoController">
+<AnchorPane prefHeight="323.0" prefWidth="914.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.CargarPedidoController">
 
     <!-- Right Pane with Calendars, ComboBoxes, TableView, and Description TextField -->
-    <Pane layoutX="162.0" layoutY="32.0" prefHeight="369.0" prefWidth="741.0">
-        <HBox layoutY="20.0" spacing="10.0">
-            <!-- ComboBoxes -->
-            <ComboBox promptText="Cliente" />
-            <ComboBox promptText="Servicio" />
-         <ComboBox prefWidth="150.0" promptText="Funcionario" />
-            
-                  <!-- Calendars -->
-            <DatePicker promptText="Fecha inicial" />
-            <DatePicker prefHeight="26.0" prefWidth="174.0" promptText="Fecha final" />
-        </HBox>
-   
-        <!-- Description TextField -->
-        <TextField layoutX="15.0" layoutY="94.0" prefHeight="169.0" prefWidth="210.0" promptText="Description" style="-fx-border-color: black;" />
-      <Label layoutX="15.0" layoutY="33.0" prefHeight="83.0" prefWidth="187.0" text="Empresa:" />
-      <VBox layoutX="252.0" layoutY="88.0" prefHeight="262.0" prefWidth="187.0">
-         <children>
+    <Pane layoutX="146.0" layoutY="30.0" prefHeight="271.0" prefWidth="742.0">
+      <TextField fx:id="txtEstado" layoutX="20.0" layoutY="200.0" prefHeight="25.0" prefWidth="100.0" promptText="Enter 0 or 1" onKeyTyped="#handleInput" />
+      <Label fx:id="lbCliente" layoutX="521.0" layoutY="102.0" prefHeight="83.0" prefWidth="187.0" text="Empresa: " />
+         <!-- ComboBoxes -->
+         <ComboBox fx:id="comboCliente" layoutX="521.0" layoutY="27.0" onHidden="#seleccionarCliente" prefHeight="26.0" prefWidth="149.0" promptText="Cliente" />
+         <ComboBox fx:id="comboServicio" layoutX="20.0" layoutY="27.0" prefHeight="25.0" prefWidth="175.0" promptText="Servicio" />
+      <ComboBox fx:id="comboFuncionario" layoutX="20.0" layoutY="64.0" prefHeight="25.0" prefWidth="175.0" promptText="Funcionario" />
          
-                          <!-- Table View -->
-              <TableView prefHeight="180.0" prefWidth="139.0" style="-fx-border-color: black;">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="Servicio" />
-                  <TableColumn prefWidth="109.59999389648436" text="Costo" />
-               </columns>
-            </TableView>
-            <Label prefHeight="44.0" prefWidth="148.0" text="Total" />
-         </children>
-      </VBox>
-      <TableView layoutX="449.0" layoutY="88.0" prefHeight="180.0" prefWidth="240.0">
-        <columns>
-          <TableColumn prefWidth="94.4000244140625" text="Id_funcionario" />
-          <TableColumn minWidth="0.0" prefWidth="206.39990234375" text="Nombre funcionario" />
-        </columns>
-      </TableView>
+                  <!-- Calendars -->
+         <DatePicker fx:id="fechaInicial" layoutX="284.0" layoutY="28.0" promptText="Fecha inicial" />
+         <DatePicker fx:id="fechaFinal" layoutX="284.0" layoutY="64.0" prefHeight="26.0" prefWidth="174.0" promptText="Fecha final" />
+      <TextField fx:id="txtDescripcion" layoutX="14.0" layoutY="123.0" prefHeight="62.0" prefWidth="381.0" promptText="Descripcion" />
+      <TextField fx:id="txtCant" layoutX="205.0" layoutY="28.0" prefHeight="25.0" prefWidth="51.0" promptText="Cant. S " />
+      <TextField fx:id="txtIdPedido" layoutX="20.0" layoutY="232.0" prefHeight="25.0" prefWidth="83.0" promptText="Id Pedido" />
     </Pane>
    <ImageView fitHeight="83.0" fitWidth="84.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@ELECE_logo.jpeg" />
       </image>
    </ImageView>
-
-       <!-- TitledPane -->
-    <TitledPane animated="false" layoutX="14.0" layoutY="97.0" prefHeight="186.0" prefWidth="148.0" text="Acciones">
-        <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="177.0" prefWidth="398.0">
-            <VBox prefHeight="200.0" prefWidth="148.0" spacing="10.0">
-               <children>
-                       <Button text="Nuevo" />
-                       <Button text="Modificar" />
-                       <Button text="Borrar" />
-                       <Button text="Cancelar" />
-               </children>
-            </VBox>
-            </AnchorPane>
-        </content>
-    </TitledPane>
+   <Button fx:id="btnGuardar" layoutX="42.0" layoutY="140.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+   <Button fx:id="btnCancelar" layoutX="42.0" layoutY="178.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
 
 </AnchorPane>

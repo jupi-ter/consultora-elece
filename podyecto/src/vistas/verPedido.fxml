@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="517.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.VerPedidoController">
+      <TableView fx:id="tablaDetallePedido" layoutX="34.0" layoutY="271.0" prefHeight="200.0" prefWidth="532.0">
+        <columns>
+          <TableColumn fx:id="columnaIdFuncionario" prefWidth="117.0" text="id_funcionario" />
+          <TableColumn fx:id="columnaIdPedidoDetalle" prefWidth="97.0" text="id_pedido" />
+            <TableColumn fx:id="columnaIdEmpresa" prefWidth="110.0" text="id_empresa" />
+            <TableColumn fx:id="columnaIdServicio" prefWidth="87.0" text="id_servicio" />
+            <TableColumn fx:id="columnaCantidad" prefWidth="120.0" text="cantidad_pedida" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tablaPedido" layoutX="34.0" layoutY="44.0" prefHeight="200.0" prefWidth="532.0">
+        <columns>
+          <TableColumn fx:id="columnaIdPedido" prefWidth="95.0" text="id_pedido" />
+          <TableColumn fx:id="columnaFechaInicio" prefWidth="88.0" text="fecha_inicio" />
+            <TableColumn fx:id="columnaFechaFinal" prefWidth="81.0" text="fecha_final" />
+            <TableColumn fx:id="columnaCostoEstimado" prefWidth="99.0" text="costo_estimado" />
+            <TableColumn fx:id="columnaDescripcion" prefWidth="87.0" text="descripcion" />
+            <TableColumn fx:id="columnaEstado" prefWidth="81.0" text="estado" />
+        </columns>
+      </TableView>
+</AnchorPane>
