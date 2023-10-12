@@ -13,7 +13,6 @@ public class servicios extends conexion implements sentencia {
     private Statement query;
 
     public servicios(int id, int costo, String nombre, String descripcion) {
-        this();
         this.id = id;
         this.costo = costo;
         this.nombre = nombre;
@@ -71,7 +70,7 @@ public class servicios extends conexion implements sentencia {
     @Override
     public boolean modificar() {
         try {
-            String sql = "UPDATE servicio SET id_servicio=" + getId() + ", nombre_servicio='" + getNombre() + "', desc_servicio='" + getDescripcion() + "', costo_servicio=" + getCosto();
+            String sql = "UPDATE servicio SET id_servicio=" + getId() + ", nombre_servicio='" + getNombre() + "', desc_servicio='" + getDescripcion() + "', costo_sevicio=" + getCosto() +  " WHERE id_servicio=" + getId() + ";";
             query = getCon().createStatement();
             query.executeUpdate(sql);
             return true;

@@ -14,6 +14,7 @@ public class conexion {
     private String contra;
     private String host;
     private Connection con;
+    //yahir baltasar
 
     public conexion(String base, String usuario, String contra, String host) {
         this.base = base;
