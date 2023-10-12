@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -27,6 +28,8 @@ import modelo.detalle_pedido;
 import modelo.funcionario;
 import modelo.pedido;
 import modelo.servicios;
+import javafx.stage.Stage;
+
 
 /**
  * FXML Controller class
@@ -59,6 +62,8 @@ public class CargarPedidoController implements Initializable {
     private TextField txtCant;
      @FXML
     private TextField txtEstado;
+     @FXML
+     private Stage stage;
     
     detalle_pedido dp = new detalle_pedido();
     pedido p = new pedido();
@@ -84,68 +89,71 @@ public class CargarPedidoController implements Initializable {
     }    
 
     @FXML
-    private void guardar(ActionEvent event) {
-        int idc, ids, idf, costest;
-        Alert desea = new Alert(Alert.AlertType.CONFIRMATION);
-        desea.setTitle("Aviso");
-        desea.setHeaderText(null);
-        desea.setContentText("¿Desea guardar los datos?");
-        Optional<ButtonType> accion = desea.showAndWait();
-          if(accion.get() == ButtonType.OK ){
-              if(p.insertar() && dp.insertar()){
-                p.setId_pedido(Integer.parseInt(txtIdPedido.getText()));
-                p.setDesc_pedido(txtDescripcion.getText());
-                dp.setId_pedido(Integer.parseInt(txtIdPedido.getText()));
-                dp.setCant_pedida(Integer.parseInt(txtCant.getText()));
-                p.setFecha_inicial(fechaInicial.getValue().toString());
-                p.setFecha_final(fechaFinal.getValue().toString());
-                p.setEstado_pedido(Integer.parseInt(txtEstado.getText()));
-                String cliente = comboCliente.getSelectionModel().getSelectedItem();
-                for (cliente clientes: listaclientes){
-                    if (clientes.getNombre_empresa().equals(cliente)){
-                        idc = clientes.getId_empresa();
-                        dp.setId_empresa(idc);
-                    }
-                }
-                String servicio = comboServicio.getSelectionModel().getSelectedItem();
-                for (servicios servicios: listaservicio){
-                    if (servicios.getNombre().equals(servicio)){
-                        ids = servicios.getId();
-                        costest = servicios.getCosto();
-                        p.setCosto_estimado(costest);
-                        dp.setId_servicio(ids);
-                    }
-                }
-                String funcionario = comboFuncionario.getSelectionModel().getSelectedItem();
-                for (funcionario funcionarios: listafuncionario){
-                    if (funcionarios.getNombre_funcionario().equals(funcionario)){
-                        idf = funcionarios.getId_funcionario();
-                        dp.setId_funcionario(idf);
-                    }
-                }
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-                alerta.setHeaderText(null);
-                alerta.setTitle("El sistema comunica");
-                alerta.setContentText("Datos insertados correctamente");
-                alerta.show();
-                limpiar();
-                } else {
-                    Alert alerta = new Alert(Alert.AlertType.ERROR);
-                    alerta.setHeaderText(null);
-                    alerta.setTitle("El sistema comunica");
-                    alerta.setContentText("Ha ocurrido un error");
-                    alerta.show();
-                }
-          }
-       }
+private void guardar(ActionEvent event) {
+    int idc, ids, idf, costest;
+    
+    
+    // Set properties before inserting
+    p.setId_pedido(Integer.parseInt(txtIdPedido.getText()));
+    p.setDesc_pedido(txtDescripcion.getText());
+    p.setFecha_inicial(fechaInicial.getValue().toString());
+    p.setFecha_final(fechaFinal.getValue().toString());
+    p.setEstado_pedido(Integer.parseInt(txtEstado.getText()));
+    
+    dp.setId_pedido(Integer.parseInt(txtIdPedido.getText()));
+    dp.setCant_pedida(Integer.parseInt(txtCant.getText()));
+    
+    String cliente = comboCliente.getSelectionModel().getSelectedItem();
+    for (cliente clientes: listaclientes){
+        if (clientes.getNombre_empresa().equals(cliente)){
+            idc = clientes.getId_empresa();
+            dp.setId_empresa(idc);
+        }
+    }
+    
+    String servicio = comboServicio.getSelectionModel().getSelectedItem();
+    for (servicios servicios: listaservicio){
+        if (servicios.getNombre().equals(servicio)){
+            ids = servicios.getId();
+            costest = servicios.getCosto();
+            p.setCosto_estimado(costest);
+            dp.setId_servicio(ids);
+        }
+    }
+    
+    String funcionario = comboFuncionario.getSelectionModel().getSelectedItem();
+    for (funcionario funcionarios: listafuncionario){
+        if (funcionarios.getNombre_funcionario().equals(funcionario)){
+            idf = funcionarios.getId_funcionario();
+            dp.setId_funcionario(idf);
+        }
+    }
+    
+    // Insert after setting properties
+    if (p.insertar() && dp.insertar()) {
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("El sistema comunica");
+        alerta.setContentText("Datos insertados correctamente");
+        alerta.show();
+    } else {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setHeaderText(null);
+        alerta.setTitle("El sistema comunica");
+        alerta.setContentText("Ha ocurrido un error");
+        alerta.show();
+    }
+}
+
+       
 
         
     
+@FXML
+private void cancelar(ActionEvent event) {
+ 
+}
 
-    @FXML
-    private void cancelar(ActionEvent event) {
-        limpiar();
-    }
     
      @FXML
     private void handleInput(KeyEvent event) {
@@ -191,19 +199,5 @@ public class CargarPedidoController implements Initializable {
         
         
     }
-     private void limpiar(){
-        comboCliente.getItems().clear();
-        comboFuncionario.getItems().clear();
-        comboServicio.getItems().clear();
-        txtIdPedido.clear();
-        txtDescripcion.clear();
-        txtEstado.clear();
-        fechaInicial.setValue(LocalDate.now());
-        fechaFinal.setValue(LocalDate.now());
-
-
-
-    
-    }
-    
+   
 }

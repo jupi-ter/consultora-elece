@@ -99,16 +99,17 @@ public class detalle_pedido extends conexion implements sentencia {
 
     @Override
     public boolean borrar() {
-        try {
-            String sql = "DELETE FROM detalle_pedido WHERE id_pedido=" + getId_pedido();
-            query = getCon().createStatement();
-            query.executeUpdate(sql);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+    try {
+        String sql = "DELETE FROM 'detalle_pedido' WHERE 'id_pedido' = " + getId_pedido();
+        query = getCon().createStatement();
+        query.executeUpdate(sql);
+        return true;
+    } catch (SQLException ex) {
+        Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
+        return false;
     }
+}
+
 
     @Override
     public ArrayList consultar() {

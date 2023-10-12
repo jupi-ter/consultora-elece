@@ -15,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -79,43 +78,15 @@ public class FuncionarioController implements Initializable {
     ObservableList<funcionario> registrosfiltrados;
     reportes r = new reportes();
     boolean modificar = false;
-    @FXML
-    private Hyperlink gr;
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargardatos();
     }    
-
+    
     @FXML
     private void reporte(ActionEvent event) {
-        /*
-        ArrayList<String> opciones = new ArrayList<>();
-        opciones.add("Todos");
-        opciones.add("Curso");
-        ChoiceDialog dialogo = new ChoiceDialog(opciones.get(0),opciones);
-        dialogo.setTitle("Seleccione :");
-        dialogo.setHeaderText(null);
-        Optional<String> resultado = dialogo.showAndWait();
-        if (resultado.isPresent()) {
-            if (resultado.get().equals("Todos")) {
-                r.generarReporte("informes/alumno.jasper", "Informe Alumno");
-            } else {
-                ArrayList<String> opcionesCurso = new ArrayList<>();
-                opcionesCurso.add("Primero");
-                opcionesCurso.add("Segundo");
-                opcionesCurso.add("Tercero");
-                ChoiceDialog dialogoCurso = new ChoiceDialog(opcionesCurso.get(0),opcionesCurso);
-                dialogoCurso.setTitle("Seleccione Curso :");
-                dialogoCurso.setHeaderText(null);
-                Optional<String> resultadoCurso = dialogoCurso.showAndWait();
-                if (resultadoCurso.isPresent()) {
-                    r.generarReporteParametro("informes/alumno2.jasper", "Informe Alumnos/Curso", "curso", resultadoCurso.get());
-                }
-            }
-        }
-*/
+        r.generarReporte("reportes/Funcionarios2.jasper", "Informe Funcionario");
     }
     
     @FXML

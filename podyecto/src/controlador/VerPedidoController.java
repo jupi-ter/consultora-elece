@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -51,6 +52,13 @@ public class VerPedidoController implements Initializable {
     private TableColumn<detalle_pedido, Integer> columnaIdServicio;
     @FXML
     private TableColumn<detalle_pedido, Integer> columnaCantidad;
+    @FXML
+    private Button btnEliminar;
+    @FXML
+    private Button btnModificar;
+    @FXML
+    private Button btnFactura;
+    
     
     pedido p = new pedido();
     detalle_pedido dp = new detalle_pedido();
@@ -68,7 +76,13 @@ public class VerPedidoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        cargardatos();
-    }  
+    } 
+    
+    @FXML
+    private void eliminar(){
+    
+    
+    }
     
     private void cargardatos(){
         ArrayList<pedido> lista = p.consultar();
@@ -89,8 +103,14 @@ public class VerPedidoController implements Initializable {
         columnaIdServicio.setCellValueFactory(new PropertyValueFactory<>("id_servicio"));
         columnaCantidad.setCellValueFactory(new PropertyValueFactory<>("cant_pedida"));
         tablaDetallePedido.setItems(registros2);
+        
+        
     
     
     }
+    
+
+    
+    
     
 }

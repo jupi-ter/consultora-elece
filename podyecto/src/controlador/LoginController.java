@@ -49,8 +49,8 @@ public class LoginController implements Initializable {
        
     }    
 
-    @FXML
-    private void loginAction() {
+        @FXML
+    private void loginButton() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
