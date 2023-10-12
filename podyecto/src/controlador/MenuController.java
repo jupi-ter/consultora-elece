@@ -50,8 +50,13 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    private void loadPedidosView(ActionEvent event) throws Exception {
-        abrirventana("Pedidos","/vistas/cargarPedido.fxml");
+    private void loadVerPedidosView(ActionEvent event) throws Exception {
+        abrirventana("Ver Pedidos","/vistas/verPedido.fxml");
+    }
+    
+    @FXML
+    private void loadCargarPedidos(ActionEvent event) throws Exception {
+        abrirventana("Cargar Pedidos","/vistas/cargarPedido.fxml");
     }
 
     public void abrirventana(String titulo, String direccion){

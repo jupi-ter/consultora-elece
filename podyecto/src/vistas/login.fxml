@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="713.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.LoginController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="713.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.LoginController">
   <children>
       <Pane layoutX="236.0" layoutY="150.0" prefHeight="307.0" prefWidth="335.0">
          <children>
@@ -23,7 +23,7 @@
           <Label layoutX="11.0" layoutY="105.0" text="Contraseña:" />
           <TextField fx:id="usernameField" layoutX="100.0" layoutY="53.0" prefHeight="26.0" prefWidth="152.0" />
           <PasswordField fx:id="passwordField" layoutX="99.0" layoutY="101.0" prefHeight="26.0" prefWidth="154.0" />
-          <Button layoutX="99.0" layoutY="162.0" mnemonicParsing="false" onAction="#loginButtonAction" text="Login" />
+          <Button layoutX="99.0" layoutY="162.0" mnemonicParsing="false" onAction="#loginButton" text="Login" />
          </children>
       </Pane>
     <Label fx:id="statusLabel" layoutX="287.0" layoutY="288.0" prefWidth="154.0" text="" textAlignment="CENTER" />

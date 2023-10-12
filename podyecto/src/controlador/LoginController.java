@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
     }    
 
         @FXML
-    private void loginButtonAction() {
+    private void loginButton() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
