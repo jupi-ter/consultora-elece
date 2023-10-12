@@ -73,29 +73,31 @@ public class detalle_pedido extends conexion implements sentencia {
 
     @Override
     public boolean insertar() {
-         try {
-            String sql = "INSERT INTO detalle_pedido VALUES(" + getId_funcionario() + ",'" + getId_pedido() + "','" + getId_empresa() + "'," + getId_servicio() + "','"+getCant_pedida()+")";
-            query = getCon().createStatement();
-            query.executeUpdate(sql);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+    try {
+        String sql = "INSERT INTO detalle_pedido VALUES(" + getId_funcionario() + "," + getId_pedido() + "," + getId_empresa() + "," + getId_servicio() + "," + getCant_pedida() + ")";
+        query = getCon().createStatement();
+        query.executeUpdate(sql);
+        return true;
+    } catch (SQLException ex) {
+        Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
+        return false;
     }
+}
+
 
     @Override
     public boolean modificar() {
-         try {
-            String sql = "UPDATE detalle_pedido SET id_funcionario=" + getId_funcionario() + ", id_pedido=" + getId_pedido()+ ", id_empresa" + getId_empresa() + ", id_servicio=" + getId_servicio()+", cant_pedida="+getCant_pedida()+")";
-            query = getCon().createStatement();
-            query.executeUpdate(sql);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+    try {
+        String sql = "UPDATE detalle_pedido SET id_funcionario=" + getId_funcionario() + ", id_pedido=" + getId_pedido()+ ", id_empresa=" + getId_empresa() + ", id_servicio=" + getId_servicio() + ", cant_pedida=" + getCant_pedida();
+        query = getCon().createStatement();
+        query.executeUpdate(sql);
+        return true;
+    } catch (SQLException ex) {
+        Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
+        return false;
     }
+}
+
 
     @Override
     public boolean borrar() {

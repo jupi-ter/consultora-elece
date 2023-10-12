@@ -82,36 +82,28 @@ public class pedido extends conexion implements sentencia{
             this.estado_pedido = estado_pedido;
         }
 
-    @Override
+        @Override
     public boolean insertar() {
-         try {
-            String sql = "INSERT INTO pedido VALUES(" + getId_pedido() + ",'" + getFecha_inicial() + "','" + getFecha_final() + "'," + getCosto_estimado() + "','"+getDesc_pedido()+"','"+getEstado_pedido()+")";
-            query = getCon().createStatement();
-            query.executeUpdate(sql);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+    try {
+        String sql = "INSERT INTO pedido (id_pedido, fecha_inicio, fecha_final, costo_estimado, desc_pedido, estado_pedido) " +
+                     "VALUES (" + getId_pedido() + ", '" + getFecha_inicial() + "', '" + getFecha_final() + "', " +
+                     getCosto_estimado() + ", '" + getDesc_pedido() + "', " + getEstado_pedido() + ")";
+
+        query = getCon().createStatement();
+        query.executeUpdate(sql);
+        return true;
+    } catch (SQLException ex) {
+        Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
+        return false;
     }
+}
+
+
 
     @Override
-    public boolean modificar() {
-         try {
-            String sql = "UPDATE pedido SET id_pedido=" + getId_pedido() + ", fecha_inicial='" + getFecha_inicial()+ "', fecha_final='" + getFecha_final() + "', costo_estimado=" + getCosto_estimado()+", desc_pedido='"+getDesc_pedido()+"', estado_pedido="+getEstado_pedido()+")";
-            query = getCon().createStatement();
-            query.executeUpdate(sql);
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-    }
-
-    @Override
-    public boolean borrar() {
+     public boolean modificar() {
         try {
-            String sql = "DELETE FROM pedido WHERE id_pedido=" + getId_pedido();
+            String sql = "UPDATE pedido SET id_pedido=" + getId_pedido() + ", fecha_inicial='" + getFecha_inicial() + "', fecha_final='" + getFecha_final() + "', costo_estimado=" + getCosto_estimado() + ", desc_pedido='" + getDesc_pedido() + "', estado_pedido=" + getEstado_pedido();
             query = getCon().createStatement();
             query.executeUpdate(sql);
             return true;
@@ -119,7 +111,21 @@ public class pedido extends conexion implements sentencia{
             Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
+}
+
+@Override
+public boolean borrar() {
+    try {
+        String sql = "DELETE FROM pedido WHERE id_pedido=" + getId_pedido();
+        query = getCon().createStatement();
+        query.executeUpdate(sql);
+        return true;
+    } catch (SQLException ex) {
+        Logger.getLogger(servicios.class.getName()).log(Level.SEVERE, null, ex);
+        return false;
     }
+}
+
 
     @Override
     public ArrayList consultar() {
